@@ -1,1 +1,81 @@
-<p>create-user works!</p>
+<form
+  [formGroup]="createUserForm"
+  (ngSubmit)="onSubmit()"
+  class="max-w-lg mx-auto mt-10 bg-white rounded-xl shadow-lg p-8 space-y-6"
+>
+  <h2 class="text-2xl font-bold text-center text-gray-800 mb-6">Créer un compte</h2>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="firstname" class="block mb-2 text-sm font-medium text-gray-700">Prénom</label>
+      <input
+        id="firstname"
+        type="text"
+        formControlName="firstname"
+        placeholder="Votre prénom"
+        class="w-full rounded-lg border border-gray-300 p-2.5 focus:ring-blue-500 focus:border-blue-500"
+      />
+    </div>
+    <div>
+      <label for="lastname" class="block mb-2 text-sm font-medium text-gray-700">Nom</label>
+      <input
+        id="lastname"
+        type="text"
+        formControlName="lastname"
+        placeholder="Votre nom"
+        class="w-full rounded-lg border border-gray-300 p-2.5 focus:ring-blue-500 focus:border-blue-500"
+      />
+    </div>
+  </div>
+
+  <div>
+    <label for="email" class="block mb-2 text-sm font-medium text-gray-700">Email</label>
+    <input
+      id="email"
+      type="email"
+      formControlName="email"
+      placeholder="Votre email"
+      class="w-full rounded-lg border border-gray-300 p-2.5 focus:ring-blue-500 focus:border-blue-500"
+    />
+  </div>
+
+  <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+    <div>
+      <label for="password" class="block mb-2 text-sm font-medium text-gray-700">Mot de passe</label>
+      <input
+        id="password"
+        type="password"
+        formControlName="password"
+        placeholder="Mot de passe"
+        class="w-full rounded-lg border border-gray-300 p-2.5 focus:ring-blue-500 focus:border-blue-500"
+      />
+    </div>
+    <div>
+      <label for="confirmPassword" class="block mb-2 text-sm font-medium text-gray-700">Confirmation</label>
+      <input
+        id="confirmPassword"
+        type="password"
+        formControlName="confirmPassword"
+        placeholder="Confirmez le mot de passe"
+        class="w-full rounded-lg border border-gray-300 p-2.5 focus:ring-blue-500 focus:border-blue-500"
+      />
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    class="w-full py-3 px-6 rounded-lg bg-[var(--color-primary)] text-white font-semibold hover:bg-[var(--color-background)] transition"
+  >
+    Créer un compte
+  </button>
+
+  <div class="text-center mt-4">
+    <span class="text-gray-600">Déjà un compte ?</span>
+    <a
+      routerLink="/login"
+      class="text-blue-600 hover:cursor-pointer hover:underline font-semibold ml-1"
+    >
+      Connectez-vous !
+    </a>
+  </div>
+</form>
