@@ -64,7 +64,8 @@
 
   <button
     type="submit"
-    class="w-full py-3 px-6 rounded-lg bg-[var(--color-primary)] text-white font-semibold hover:bg-[var(--color-background)] transition"
+    [disabled]="createUserForm.invalid"
+    class="w-full py-3 px-6 rounded-lg bg-[var(--color-primary)] text-white font-semibold hover:bg-[var(--color-background)] transition disabled:opacity-50"
   >
     Créer un compte
   </button>

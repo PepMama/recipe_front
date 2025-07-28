@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router'; 
+import { RouterModule, Router } from '@angular/router'; 
 import { AuthService } from '../../services/auth';
 
 @Component({
@@ -18,7 +18,7 @@ import { AuthService } from '../../services/auth';
 export class CreateUser {
   createUserForm: FormGroup;
 
-  constructor(private fb: FormBuilder, private auth: AuthService) {
+  constructor(private fb: FormBuilder, private auth: AuthService, private router: Router) {
     // Initialisation du formulaire avec les contrôles requis
     this.createUserForm = this.fb.group({
       email: ['', [Validators.required, Validators.email]],
@@ -41,6 +41,7 @@ export class CreateUser {
     this.auth.register(userData).subscribe({
       next: (response) => {
         console.log('Inscription réussie', response);
+        this.router.navigate(['/home']);
       },
       error: (err) => {
         console.error('Erreur lors de l’inscription', err);
