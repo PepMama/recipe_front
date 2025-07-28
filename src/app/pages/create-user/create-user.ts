@@ -1,26 +1,50 @@
 import { Component } from '@angular/core';
-import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { FormBuilder, FormGroup, Validators, ReactiveFormsModule } from '@angular/forms';
+import { CommonModule } from '@angular/common';
+import { RouterModule } from '@angular/router'; 
+import { AuthService } from '../../services/auth';
 
 @Component({
   selector: 'app-create-user',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [
+    ReactiveFormsModule, 
+    CommonModule,
+    RouterModule
+  ],
   templateUrl: './create-user.html',
   styleUrls: ['./create-user.css']
 })
 export class CreateUser {
-  // Créer le formulaire angular
-  createUserForm: FormGroup = new FormGroup({
-    email: new FormControl(''),
-    firstname: new FormControl(''),
-    lastname: new FormControl(''),
-    password: new FormControl(''),
-    confirmPassword: new FormControl('')
-  });
+  createUserForm: FormGroup;
+
+  constructor(private fb: FormBuilder, private auth: AuthService) {
+    // Initialisation du formulaire avec les contrôles requis
+    this.createUserForm = this.fb.group({
+      email: ['', [Validators.required, Validators.email]],
+      password: ['', Validators.required],
+      confirmPassword: ['', Validators.required],
+      lastname: ['', Validators.required],
+      firstname: ['', Validators.required],
+      role: ['ROLE_USER', Validators.required]
+    });
+  }
 
   // Méthode pour soumettre le formulaire
   onSubmit() {
-    const formData = this.createUserForm.value;
-    console.log('Form Data:', formData);
+    if (this.createUserForm.invalid) {
+      this.createUserForm.markAllAsTouched();
+      return;
+    }
+    const { confirmPassword, ...userData } = this.createUserForm.value;
+
+    this.auth.register(userData).subscribe({
+      next: (response) => {
+        console.log('Inscription réussie', response);
+      },
+      error: (err) => {
+        console.error('Erreur lors de l’inscription', err);
+      }
+    });
   }
 }
