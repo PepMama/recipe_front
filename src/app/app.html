@@ -1,1 +1,12 @@
-<router-outlet></router-outlet>
+<ng-container *ngIf="!isAuthPage; else authContent">
+  <div class="flex min-h-screen">
+    <app-navbar></app-navbar>
+    <div class="flex-1">
+      <router-outlet></router-outlet>
+    </div>
+  </div>
+</ng-container>
+<ng-template #authContent>
+  <router-outlet></router-outlet>
+</ng-template>
+

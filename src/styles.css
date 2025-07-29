@@ -4,9 +4,10 @@
 
 /* 1. Déclaration des variables CSS globales */
 :root {
-  --color-primary:   #508130; /* vert principal */
-  --color-text:      #000000; /* noir */
-  --color-background: #111827; /* gris foncé */
+  --color-primary: #508130;
+  --color-text:#000000;
+  --color-background: #111827;
+  --color-white: #FFFF;
 }
 
 /* 2. Reset / règles globales */

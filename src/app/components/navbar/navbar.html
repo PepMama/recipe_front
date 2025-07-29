@@ -1,1 +1,29 @@
-<p>navbar works!</p>
+<nav class="flex flex-col rounded-e-lg items-center h-screen w-[80px] md:w-[220px] bg-[var(--color-primary)] fixed left-0 top-0 z-20 select-none">
+  <div class="mt-6 mb-10 flex items-center justify-center">
+    <svg class="w-10 h-10 md:w-14 md:h-14 text-white" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+      <circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" />
+      <path d="M8 12l2 2 4-4" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+  </div>
+
+  <ul class="flex-1 flex flex-col gap-2 w-full items-center md:items-stretch">
+    <li>
+      <a routerLink="/ajouter-recette" class="block py-3 px-2 md:px-4 rounded text-white text-xs md:text-base hover:bg-white/20 hover:cursor-pointer transition text-center md:text-left">Ajouter une recette</a>
+    </li>
+    <li>
+      <a routerLink="/vos-recettes" class="block py-3 px-2 md:px-4 rounded text-white text-xs md:text-base hover:bg-white/20 hover:cursor-pointer  transition text-center md:text-left">Vos recettes</a>
+    </li>
+    <li>
+      <a routerLink="/decouvrir" class="block py-3 px-2 md:px-4 rounded text-white text-xs md:text-base hover:bg-white/20 hover:cursor-pointer  transition text-center md:text-left">Découvrir des recettes</a>
+    </li>
+    <li>
+      <a routerLink="/favoris" class="block py-3 px-2 md:px-4 rounded text-white text-xs md:text-base hover:bg-white/20 hover:cursor-pointer  transition text-center md:text-left">Vos favoris</a>
+    </li>
+  </ul>
+
+  <div class="w-full flex items-center justify-center md:justify-start">
+    <button class="w-full md:w-full px-4 py-4 rounded bg-white/20 text-white text-xs md:text-base font-semibold hover:bg-white/30 transition">
+      Se déconnecter
+    </button>
+  </div>
+</nav>
